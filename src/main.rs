@@ -3,9 +3,9 @@ use std::env;
 use philipshue::bridge::Bridge;
 
 fn run() -> i32 {
-    let bridge = Bridge::new(env::var("huebridge").unwrap(), env::var("hueuser").unwrap());
-// TODO:                   8 is the light I want to monitor - get this from env aswell
-    match bridge.get_light(8) {
+    let bridge = Bridge::new(env::var("huebridge").expect("huebridge env missing"), env::var("hueuser").expect("hueuser env missing"));
+    let huebulb_id: usize = env::var("huebulb").expect("huebulb env missing").parse().unwrap();
+    match bridge.get_light(huebulb_id) {
         Ok(light) => {
             println!("{} is {}",
                         light.name,
