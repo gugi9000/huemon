@@ -1,0 +1,11 @@
+[package]
+name = "huemon"
+version = "0.1.0"
+authors = ["Bjarke Sørnsen <bs@wasd.dk>"]
+
+[dependencies]
+
+[dependencies.philipshue]
+version = "*"
+default-features = false
+features = ["unstable"]
